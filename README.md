@@ -15,3 +15,9 @@ A flashcard app that lets the user study or practice software enginering termino
 - CSS
 - JavaScript
 - GitHub
+
+## Deployed site:
+
+```javascript
+const greet = 'Hello!';
+```
