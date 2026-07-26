@@ -56,6 +56,32 @@
           </button>
         </div>
       </section>
+      <section id="deck-view" class="gallery">
+        <div class="gallery__wrapping-row">
+          <h2 class="gallery__title"></h2>
+          <button class="gallery__practice__btn">practice</button>
+        </div>
+        <div class="gallery__row">
+          <ul class="gallery__list">
+            <template id="card-template">
+              <li class="card">
+                <h3 class="card__title"></h3>
+                <div class="card__row">
+                  <button type="button" aria-label="flip this card" class="card__flip-btn"></button>
+                  <button
+                    type="button"
+                    aria-label="Delete this card"
+                    class="card__delete-btn"
+                  ></button>
+                </div>
+              </li>
+            </template>
+          </ul>
+          <button type="button" aria-label="Create a card" class="gallery__new-card-btn">
+            + New Card
+          </button>
+        </div>
+      </section>
       <section id="carousel" class="carousel">
         <h2 class="carousel__title">HTML Tags Deck &middot; 1/10</h2>
         <div class="carousel__row">
