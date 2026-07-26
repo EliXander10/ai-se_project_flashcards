@@ -1,0 +1,19 @@
+.not-found {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.not-found__status-code {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.not-found__text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
