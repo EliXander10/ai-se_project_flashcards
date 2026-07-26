@@ -50,26 +50,26 @@ window.addEventListener('hashchange', router);
 
 function createDeckEl(item) {
   const templateEl = document.querySelector('#deck-template');
-  const deckEl = templateEl.content.querySelector('.deck').cloneNode(true);
-  const deckLink = deckEl.querySelector('.deck__link');
+  const deckEl = templateEl.content.querySelector('.card').cloneNode(true);
+  const deckLink = deckEl.querySelector('.card__link');
   deckLink.href = `#carousel/${item.id}`;
-  const deckTitleEl = deckEl.querySelector('.deck__title');
+  const deckTitleEl = deckEl.querySelector('.card__title');
   deckTitleEl.textContent = item.name;
-  const deckCount = deckEl.querySelector('.deck__count');
+  const deckCount = deckEl.querySelector('.card__count');
   deckCount.textContent = `${item.cards.length} Cards`;
-  const deckDeleteBtnEl = deckEl.querySelector('.deck__delete-btn');
+  const deckDeleteBtnEl = deckEl.querySelector('.card__delete-btn');
   deckDeleteBtnEl.addEventListener('click', () => {
     deckEl.remove();
   });
   const deckColor = hexToString(item.color);
-  deckEl.classList.add(`deck_color_${deckColor}`);
+  deckEl.classList.add(`card_color_${deckColor}`);
 
   return deckEl;
 }
 
 function renderDeckEl(item) {
   const deckEl = createDeckEl(item);
-  const containerEl = document.querySelector('.decks__list');
+  const containerEl = document.querySelector('.gallery__list');
   containerEl.prepend(deckEl);
 }
 
