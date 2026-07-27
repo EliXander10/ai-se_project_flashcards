@@ -62,17 +62,28 @@
   align-items: center;
 }
 
-.card__delete-btn {
+.card__btn {
   width: 24px;
   height: 24px;
   background-color: transparent;
-  opacity: 50%;
-  background-image: url('../images/delete.svg');
-  cursor: pointer;
   border-style: none;
+  cursor: pointer;
+  opacity: 50%;
   z-index: 2;
 }
 
-.card__delete-btn:hover {
+.card__btn:hover {
   opacity: 100%;
+}
+
+.card__btn_type_delete {
+  background-image: url('../images/delete.svg');
+}
+
+.card__btn_type_flip {
+  background-image: url('../images/flip.svg');
+}
+
+.card_color_white {
+  background-color: #ffffff;
 }
