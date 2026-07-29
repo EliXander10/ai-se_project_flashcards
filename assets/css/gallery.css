@@ -11,8 +11,9 @@
 }
 
 .gallery__row {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(min(325px, 100%), 353px));
   gap: 20px;
 }
 
@@ -69,4 +70,17 @@
 .gallery__new-card-btn:hover {
   background-color: #c5c5c5;
   color: #1a1a1a;
+}
+
+@media (min-width: 1094px) {
+  .gallery__row {
+    grid-template-columns: repeat(auto-fill, 325px);
+  }
+}
+
+@media (max-width: 749px) {
+  .gallery__title {
+    font-size: 32px;
+    margin-bottom: 42px;
+  }
 }

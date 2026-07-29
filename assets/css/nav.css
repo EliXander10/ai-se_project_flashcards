@@ -17,3 +17,9 @@
 .nav__link:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 749px) {
+  .nav__links {
+    gap: 24px;
+  }
+}

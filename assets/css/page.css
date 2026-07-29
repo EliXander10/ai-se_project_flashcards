@@ -3,10 +3,9 @@
   font-family: Inter, Arial, Helvetica, sans-serif;
   color: #1a1a1a;
   line-height: 1;
-  padding: 20px 40px;
+  padding: 20px 40px 32px;
   max-width: 1440px;
   margin: 0 auto;
-  padding-bottom: 32px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -21,4 +20,13 @@
 
 .page__main-content_location_carousel {
   margin-top: 106px;
+}
+@media (max-width: 749px) {
+  .page {
+    padding: 20px 20px 22px;
+  }
+
+  .page__main-content {
+    margin-top: 42px;
+  }
 }
