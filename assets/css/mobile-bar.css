@@ -1,0 +1,61 @@
+@media screen and (max-width: 765px) {
+  .page {
+    padding-bottom: 100px;
+  }
+
+  .page::after {
+    content: '';
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 81px;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent 35%, #ececec);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .gallery__new-card-btn,
+  .gallery__practice__btn {
+    position: fixed;
+    bottom: 81px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: calc(100% - 40px);
+    max-width: 353px;
+    height: auto;
+    border-radius: 8px;
+    padding: 12px 20px;
+    aspect-ratio: auto;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    line-height: 100%;
+    font-size: 18px;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+  }
+
+  .gallery__new-card-btn {
+    max-width: 353px;
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+
+  .gallery__practice__btn {
+    width: calc(50% - 6px - 20px);
+    margin-right: 20px;
+    left: auto;
+  }
+
+  .gallery__new-card-btn_location_deck-view {
+    width: calc(50% - 6px - 20px);
+    background-color: #cccccccc;
+    color: #1a1a1a80;
+    margin-left: 20px;
+    right: auto;
+  }
+}

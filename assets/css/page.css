@@ -21,7 +21,7 @@
 .page__main-content_location_carousel {
   margin-top: 106px;
 }
-@media (max-width: 749px) {
+@media (max-width: 805px) {
   .page {
     padding: 20px 20px 22px;
   }
