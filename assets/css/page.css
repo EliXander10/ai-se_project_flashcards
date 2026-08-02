@@ -11,6 +11,9 @@
   min-height: 100vh;
   box-sizing: border-box;
 }
+.page__main-content_location_carousel ~ .footer {
+  position: static;
+}
 
 .page__main-content {
   margin-top: 60px;

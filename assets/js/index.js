@@ -7,6 +7,7 @@ const homeSection = document.querySelector('#home');
 const deckViewSection = document.querySelector('#deck-view');
 const carouselSection = document.querySelector('#carousel');
 const notFoundSection = document.querySelector('#not-found');
+const pageEl = document.querySelector('.page');
 const pageMainContent = document.querySelector('.page__main-content');
 
 function renderHomeView() {
@@ -15,6 +16,7 @@ function renderHomeView() {
   carouselSection.style.display = 'none';
   notFoundSection.style.display = 'none';
   pageMainContent.classList.remove('page__main-content_location_carousel');
+  pageEl.classList.remove('page_no-mobile-bar');
 }
 
 function renderMyDeckView(deck) {
@@ -23,6 +25,8 @@ function renderMyDeckView(deck) {
   carouselSection.style.display = 'flex';
   notFoundSection.style.display = 'none';
   pageMainContent.classList.add('page__main-content_location_carousel');
+  pageEl.classList.add('page_no-mobile-bar');
+  // pageEl.classList.add('page_location_carousel .footer');
   renderCarouselView(deck);
 }
 
@@ -32,6 +36,7 @@ function renderNotFoundView() {
   carouselSection.style.display = 'none';
   notFoundSection.style.display = 'block';
   pageMainContent.classList.remove('page__main-content_location_carousel');
+  pageEl.classList.remove('page_no-mobile-bar');
 }
 
 function router() {

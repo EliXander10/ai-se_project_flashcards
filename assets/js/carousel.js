@@ -5,7 +5,6 @@ import { decks } from './decks.js';
 function renderCarouselView(deck) {
   let currentIndex = 0;
   let showingQuestion = true;
-
   const carouselEl = document.querySelector('.carousel');
   let leftBtn = carouselEl.querySelector('.carousel__btn_type_left');
   let rightBtn = carouselEl.querySelector('.carousel__btn_type_right');

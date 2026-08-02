@@ -19,3 +19,8 @@ A flashcard site that lets the user study or practice software enginering termin
 ## Deployed site:
 
 Click Here: [TechFun FlashCards](https://elixander10.github.io/ai-se_project_flashcards/) to try it out.
+
+## Project Pitch Video
+
+Check out [this video](https://drive.google.com/file/d/1PW0oSgh5jaA-nP_qnU786_ZuKlFiaPK_/view?usp=drive_link), where I describe my
+project and a challenges I faced while building it.

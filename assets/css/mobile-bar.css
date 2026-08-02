@@ -15,6 +15,10 @@
     z-index: 1;
   }
 
+  .page_no-mobile-bar::after {
+    display: none;
+  }
+
   .gallery__new-card-btn,
   .gallery__practice__btn {
     position: fixed;
