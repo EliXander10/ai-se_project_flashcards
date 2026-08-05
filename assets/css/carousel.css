@@ -1,7 +1,7 @@
 .carousel {
   display: flex;
   flex-direction: column;
-  /* align-content: center; */
+  align-items: center;
   margin-bottom: 50px;
 }
 
@@ -16,12 +16,9 @@
 
 .carousel__grid {
   display: grid;
-  /* display: flex; */
   align-items: center;
-  /* justify-items: center; */
   grid-template-columns: auto minmax(353px, 440px) auto;
   justify-content: center;
-  /* justify-items: center; */
   gap: 20px;
   grid-template-areas:
     'leftBtn card rightBtn'
@@ -29,10 +26,6 @@
 }
 
 .carousel__card {
-  /* max-height: 300px; */
-  /* width: 440px; */
-  /* width: 100%; */
-  /* max-width: 440px; */
   aspect-ratio: 22 / 15;
   background-color: #4eb969;
   border-radius: 20px;
@@ -102,7 +95,6 @@
 }
 
 .carousel__btn_type_flip {
-  /* margin-top: 20px; */
   background: #fff url('../images/flip.svg') no-repeat center;
   opacity: 50%;
   grid-area: flipBtn;
@@ -126,7 +118,6 @@
   .carousel__card {
     max-width: 353px;
     aspect-ratio: 353 / 420;
-    /* max-height: 420px; */
     width: 100%;
     box-shadow:
       1px -1px 2px 0px #00000040 inset,
@@ -136,31 +127,28 @@
 
   .carousel__btn {
     box-shadow: 0px 1px 4px 0px #00000026;
+    justify-self: center;
   }
 
   .carousel__grid {
     display: grid;
-    /* grid-template-columns: auto minmax(min(353px, 100%), 440px) auto; */
-    grid-template-columns: auto 1fr auto;
+    min-width: 353px;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas:
-      'card card card'
+      ' card card card '
       'leftBtn flipBtn rightBtn';
-    justify-items: center;
-    /* align-items: center; */
   }
 
   .carousel__btn_type_left {
-    /* justify-self: start; */
+    justify-self: start;
   }
 
   .carousel__btn_type_right {
-    /* justify-self: end; */
+    justify-self: end;
   }
 
   .carousel__btn_type_flip {
-    /* justify-self: center; */
     align-self: center;
-    /* align-items: center; */
   }
 
   .carousel__title {

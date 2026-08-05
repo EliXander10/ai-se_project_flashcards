@@ -11,9 +11,6 @@
   min-height: 100vh;
   box-sizing: border-box;
 }
-.page__main-content_location_carousel ~ .footer {
-  position: static;
-}
 
 .page__main-content {
   margin-top: 60px;
@@ -24,7 +21,20 @@
 .page__main-content_location_carousel {
   margin-top: 106px;
 }
-@media (max-width: 805px) {
+@media (max-width: 765px) {
+  .page__main-content_location_carousel ~ .footer {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #ececec;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 56px;
+    z-index: 2;
+  }
   .page {
     padding: 20px 20px 22px;
   }

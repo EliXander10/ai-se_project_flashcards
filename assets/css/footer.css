@@ -8,9 +8,16 @@
 }
 @media (max-width: 765px) {
   .footer {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #ececec;
     position: fixed;
+    left: 0;
+    right: 0;
     bottom: 0;
     height: 56px;
-    z-index: 3;
+    z-index: 2;
   }
 }

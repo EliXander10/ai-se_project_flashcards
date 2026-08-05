@@ -1,6 +1,5 @@
 import { hexToString } from './colors.js';
 import { removeColorClasses } from './colors.js';
-import { decks } from './decks.js';
 
 function renderCarouselView(deck) {
   let currentIndex = 0;
