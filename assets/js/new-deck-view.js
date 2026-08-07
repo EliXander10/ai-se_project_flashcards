@@ -1,0 +1,3 @@
+function renderNewDeckView() {}
+
+export { renderNewDeckView };

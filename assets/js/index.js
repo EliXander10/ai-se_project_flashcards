@@ -2,18 +2,25 @@ import { decks, getDeckByID } from './decks.js';
 import { hexToString } from './colors.js';
 import { renderCarouselView } from './carousel.js';
 import { renderDeckView } from './deck-view.js';
+import { renderNewDeckView } from './new-deck-view.js';
 
 const homeSection = document.querySelector('#home');
 const deckViewSection = document.querySelector('#deck-view');
 const carouselSection = document.querySelector('#carousel');
+const newDeckSection = document.querySelector('#new-deck-view');
 const notFoundSection = document.querySelector('#not-found');
 const pageEl = document.querySelector('.page');
 const pageMainContent = document.querySelector('.page__main-content');
+const newDeckBtn = document.querySelector('#home .gallery__new-card-btn');
+newDeckBtn.addEventListener('click', () => {
+  window.location.hash = 'new-deck-view';
+});
 
 function renderHomeView() {
   homeSection.style.display = 'flex';
   deckViewSection.style.display = 'none';
   carouselSection.style.display = 'none';
+  newDeckSection.style.display = 'none';
   notFoundSection.style.display = 'none';
   pageMainContent.classList.remove('page__main-content_location_carousel');
   pageEl.classList.remove('page_no-mobile-bar');
@@ -23,17 +30,29 @@ function renderMyDeckView(deck) {
   homeSection.style.display = 'none';
   deckViewSection.style.display = 'none';
   carouselSection.style.display = 'flex';
+  newDeckSection.style.display = 'none';
   notFoundSection.style.display = 'none';
   pageMainContent.classList.add('page__main-content_location_carousel');
   pageEl.classList.add('page_no-mobile-bar');
-  // pageEl.classList.add('page_location_carousel .footer');
   renderCarouselView(deck);
+}
+
+function renderMyNewDeckView(deck) {
+  homeSection.style.display = 'none';
+  deckViewSection.style.display = 'none';
+  carouselSection.style.display = 'none';
+  newDeckSection.style.display = 'flex';
+  notFoundSection.style.display = 'none';
+  pageMainContent.classList.add('page__main-content_location_carousel');
+  pageEl.classList.add('page_no-mobile-bar');
+  renderNewDeckView();
 }
 
 function renderNotFoundView() {
   homeSection.style.display = 'none';
   deckViewSection.style.display = 'none';
   carouselSection.style.display = 'none';
+  newDeckSection.style.display = 'none';
   notFoundSection.style.display = 'block';
   pageMainContent.classList.remove('page__main-content_location_carousel');
   pageEl.classList.remove('page_no-mobile-bar');
@@ -57,6 +76,8 @@ function router() {
       return renderNotFoundView();
     }
     return renderMyDeckView(deck);
+  } else if (hash === 'new-deck-view') {
+    return renderMyNewDeckView();
   } else {
     return renderNotFoundView();
   }
