@@ -8,6 +8,7 @@ const pageMainContent = document.querySelector('.page__main-content');
 const deckViewTitleEl = deckViewSection.querySelector('.gallery__title');
 const deckViewListEl = deckViewSection.querySelector('.gallery__list');
 const practiceBtn = deckViewSection.querySelector('.gallery__practice__btn');
+const newDeckSection = document.querySelector('#new-deck-view');
 
 function createDeckCardEl(card, deckColor) {
   const templateEl = document.querySelector('#card-template');
@@ -53,6 +54,7 @@ function renderDeckCards(deck) {
 export function renderDeckView(deck) {
   homeSection.style.display = 'none';
   deckViewSection.style.display = 'flex';
+  newDeckSection.style.display = 'none';
   carouselSection.style.display = 'none';
   notFoundSection.style.display = 'none';
   pageMainContent.classList.remove('page__main-content_location_carousel');

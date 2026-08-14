@@ -2,7 +2,7 @@ import { decks, getDeckByID } from './decks.js';
 import { hexToString } from './colors.js';
 import { renderCarouselView } from './carousel.js';
 import { renderDeckView } from './deck-view.js';
-import { renderNewDeckView } from './new-deck-view.js';
+import { renderNewDeckView, disableSubmitBtn } from './new-deck-view.js';
 
 const homeSection = document.querySelector('#home');
 const deckViewSection = document.querySelector('#deck-view');
@@ -38,13 +38,13 @@ function renderMyDeckView(deck) {
 }
 
 function renderMyNewDeckView(deck) {
-  homeSection.style.display = 'none';
-  deckViewSection.style.display = 'none';
-  carouselSection.style.display = 'none';
-  newDeckSection.style.display = 'flex';
-  notFoundSection.style.display = 'none';
-  pageMainContent.classList.add('page__main-content_location_carousel');
-  pageEl.classList.add('page_no-mobile-bar');
+  // homeSection.style.display = 'none';
+  // deckViewSection.style.display = 'none';
+  // carouselSection.style.display = 'none';
+  // newDeckSection.style.display = 'flex';
+  // notFoundSection.style.display = 'none';
+  // pageMainContent.classList.add('page__main-content_location_carousel');
+  // pageEl.classList.add('page_no-mobile-bar');
   renderNewDeckView();
 }
 
@@ -77,6 +77,7 @@ function router() {
     }
     return renderMyDeckView(deck);
   } else if (hash === 'new-deck-view') {
+    disableSubmitBtn();
     return renderMyNewDeckView();
   } else {
     return renderNotFoundView();
