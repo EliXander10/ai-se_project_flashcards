@@ -1,8 +1,15 @@
 import { decks } from './decks.js';
 
 const NewDeckForm = document.querySelector('#new-deck-view__form');
-const NewDeckFormTextArea = NewDeckForm.querySelector('.new-deck-view__text-label__textarea');
+// const NewDeckFormTextArea = NewDeckForm.querySelector('.new-deck-view__text-label__textarea');
 const NewDeckFormSubmitBtn = NewDeckForm.querySelector('.new-deck-view__create-deck-btn');
+const errorModal = document.querySelector('#error-modal');
+const errorModalMessage = errorModal.querySelector('.modal__error');
+const errorModalCloseBtn = errorModal.querySelector('.modal__close');
+errorModalCloseBtn.addEventListener('click', () => {
+  errorModal.classList.remove('modal_visible');
+  errorModalMessage.textContent = '';
+});
 
 function renderNewDeckView() {
   const homeSection = document.querySelector('#home');
@@ -26,18 +33,65 @@ function renderNewDeckView() {
   pageEl.classList.add('page_no-mobile-bar');
 }
 
+function showError(message) {
+  errorModal.classList.add('modal_visible');
+  errorModalMessage.textContent = message;
+}
+
+function parseJSON(jsonString) {
+  try {
+    return JSON.parse(jsonString);
+  } catch (error) {
+    return null;
+  }
+}
+
 NewDeckForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const formData = new FormData(e.target);
   const values = Object.fromEntries(formData);
+  const jsonData = parseJSON(values.text);
+  const isObject = jsonData !== null && typeof jsonData === 'object' && !Array.isArray(jsonData);
+
+  if (!isObject) {
+    showError('is not vaild json should be an object');
+    return;
+  }
+
+  function validateName(name) {
+    if (typeof name != 'string' || name.length < 2 || name.length > 80) {
+      showError('must be a string between 2-80 characters long');
+      return;
+    }
+    return name;
+  }
+
+  const NAME = validateName(jsonData.name);
+  if (!NAME) {
+    return;
+  }
+  const ID = `${slugify(NAME)}-${Date.now()}`;
+
   const color = normalizeColor(values.color);
-  const jasonData = JSON.parse(values.text);
-  const ID = `${slugify(jasonData.name)}-${Date.now()}`;
+
+  if (typeof jsonData.color === 'string') {
+    const textAreaColor = normalizeColor(jsonData.color);
+    if (textAreaColor !== color) {
+      showError('json color does not match the color picked');
+      return;
+    }
+  }
+
+  if (!Array.isArray(jsonData.cards)) {
+    showError('cards is not an array');
+    return;
+  }
+
   decks.push({
     id: ID,
     color: color,
-    name: jasonData.name,
-    cards: jasonData.cards,
+    name: NAME,
+    cards: jsonData.cards,
   });
   window.location.hash = 'deck/' + ID;
 });
