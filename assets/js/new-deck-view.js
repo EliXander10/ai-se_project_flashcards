@@ -1,4 +1,5 @@
-import { decks } from './decks.js';
+import { decks, fetchedDecks } from './decks.js';
+import { addDeck } from './api.js';
 
 const NewDeckForm = document.querySelector('#new-deck-view__form');
 // const NewDeckFormTextArea = NewDeckForm.querySelector('.new-deck-view__text-label__textarea');
@@ -70,7 +71,7 @@ NewDeckForm.addEventListener('submit', (e) => {
   if (!NAME) {
     return;
   }
-  const ID = `${slugify(NAME)}-${Date.now()}`;
+  // const ID = `${slugify(NAME)}-${Date.now()}`;
 
   const color = normalizeColor(values.color);
 
@@ -87,13 +88,19 @@ NewDeckForm.addEventListener('submit', (e) => {
     return;
   }
 
-  decks.push({
-    id: ID,
-    color: color,
-    name: NAME,
-    cards: jsonData.cards,
-  });
-  window.location.hash = 'deck/' + ID;
+  addDeck(NAME, color, jsonData.cards)
+    .then((newDeck) => {
+      fetchedDecks.push(newDeck);
+      window.location.hash = 'deck/' + newDeck._id;
+    })
+    .catch(showError);
+  // decks.push({
+  //   id: ID,
+  //   color: color,
+  //   name: NAME,
+  //   cards: jsonData.cards,
+  // });
+  // window.location.hash = 'deck/' + newDeck._id;
 });
 
 const HEX_DIGITS = /^[0-9a-fA-F]{6}$/;
