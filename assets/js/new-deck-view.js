@@ -133,4 +133,4 @@ function disableSubmitBtn() {
   NewDeckFormSubmitBtn.disabled = false;
 }
 
-export { renderNewDeckView, slugify, normalizeColor, disableSubmitBtn };
+export { renderNewDeckView, slugify, normalizeColor, disableSubmitBtn, showError };
