@@ -1,6 +1,10 @@
 import { hexToString } from './colors.js';
 import { removeColorClasses } from './colors.js';
 
+/** Displays a deck in the flashcard carousel and wires its controls.
+ * @param {object} deck - The deck to display.
+ * @returns {void}
+ */
 function renderCarouselView(deck) {
   let currentIndex = 0;
   let showingQuestion = true;
@@ -21,20 +25,34 @@ function renderCarouselView(deck) {
   const carouseCardColor = hexToString(deck.color);
   carouselDeckEl.classList.add(`carousel__card_color_${carouseCardColor}`);
 
+  /** Builds the carousel title from the deck ID and current card position.
+   * @returns {string} The formatted carousel title.
+   */
   function getCarouselTitleString() {
     const title = `${deck.id} · ${currentIndex + 1}/${deck.cards.length}`;
     return title;
   }
 
+  /** Disables a carousel navigation button.
+   * @param {HTMLButtonElement} buttonEl - The button to disable.
+   * @returns {void}
+   */
   function disableButton(buttonEl) {
     buttonEl.classList.add('carousel__btn_disabled');
     buttonEl.disabled = true;
   }
+  /** Enables a carousel navigation button.
+   * @param {HTMLButtonElement} buttonEl - The button to enable.
+   * @returns {void}
+   */
   function enableButton(buttonEl) {
     buttonEl.classList.remove('carousel__btn_disabled');
     buttonEl.removeAttribute('disabled');
   }
 
+  /** Updates navigation button states for the current card.
+   * @returns {void}
+   */
   function updateArrows() {
     if (currentIndex === 0) {
       disableButton(leftBtn);
@@ -49,6 +67,9 @@ function renderCarouselView(deck) {
     }
   }
 
+  /** Updates the displayed question or answer and navigation states.
+   * @returns {string} The text to display on the current card.
+   */
   function updateDisplay() {
     const currentCardQuestion = deck.cards[currentIndex].question;
     const currentCardAnswer = deck.cards[currentIndex].answer;

@@ -1,0 +1,41 @@
+.about {
+  width: 670px;
+  display: flex;
+  justify-self: center;
+  flex-direction: column;
+}
+
+.about__title {
+  margin: 0;
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.about__text {
+  display: flex;
+  flex-wrap: wrap;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.35;
+  margin-bottom: 0;
+}
+
+.about__pre {
+  margin: 0;
+  margin-top: 20px;
+  padding: 10px 12px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background-color: #1a1a1acc;
+  overflow-x: auto;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: #ffffff;
+}
+
+.about__pre code {
+  max-width: 270px;
+  width: 100%;
+}

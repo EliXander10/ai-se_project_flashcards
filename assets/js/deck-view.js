@@ -10,6 +10,11 @@ const deckViewListEl = deckViewSection.querySelector('.gallery__list');
 const practiceBtn = deckViewSection.querySelector('.gallery__practice__btn');
 const newDeckSection = document.querySelector('#new-deck-view');
 
+/** Creates a flashcard element with flip and delete controls.
+ * @param {object} card - The card data containing question and answer text.
+ * @param {string} deckColor - The deck's color name.
+ * @returns {HTMLElement} The created card element.
+ */
 function createDeckCardEl(card, deckColor) {
   const templateEl = document.querySelector('#card-template');
   const cardEl = templateEl.content.querySelector('.card').cloneNode(true);
@@ -40,6 +45,10 @@ function createDeckCardEl(card, deckColor) {
   return cardEl;
 }
 
+/** Replaces the deck view's cards with the supplied deck's cards.
+ * @param {object} deck - The deck whose cards should be rendered.
+ * @returns {void}
+ */
 function renderDeckCards(deck) {
   Array.from(deckViewListEl.children)
     .filter((child) => child.tagName.toLowerCase() !== 'template')
@@ -51,6 +60,10 @@ function renderDeckCards(deck) {
   });
 }
 
+/** Shows a deck's details and configures its practice action.
+ * @param {object} deck - The deck to display.
+ * @returns {void}
+ */
 export function renderDeckView(deck) {
   homeSection.style.display = 'none';
   deckViewSection.style.display = 'flex';

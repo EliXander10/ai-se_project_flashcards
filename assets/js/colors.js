@@ -14,7 +14,7 @@ const colorMap = {
  * returned.
  *
  * @param {string} colorName
- * @returns a hexadecimal string
+ * @returns {string} The matching hexadecimal color, or the default color.
  */
 function stringToHex(colorName) {
   const color = colorMap[colorName];
@@ -27,7 +27,7 @@ function stringToHex(colorName) {
  * if found in colorMap. If a match isn't found, null is returned.
  *
  * @param {string} hexValue
- * @returns a color name string
+ * @returns {string|null} The matching color name, or null if not found.
  */
 function hexToString(hexValue) {
   const colorString = Object.keys(colorMap).find((key) => {
@@ -41,7 +41,8 @@ function hexToString(hexValue) {
  * Accepts an HTML element and removes all BEM "_color_" modifiers from its
  * class list.
  *
- * @param {HTMLElement} element
+ * @param {HTMLElement} element - The element whose color classes are removed.
+ * @returns {void}
  */
 function removeColorClasses(element) {
   [...element.classList].forEach((cls) => {

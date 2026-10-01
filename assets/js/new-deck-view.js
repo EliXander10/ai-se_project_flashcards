@@ -1,8 +1,7 @@
-import { decks, fetchedDecks } from './decks.js';
+import { fetchedDecks } from './decks.js';
 import { addDeck } from './api.js';
 
 const NewDeckForm = document.querySelector('#new-deck-view__form');
-// const NewDeckFormTextArea = NewDeckForm.querySelector('.new-deck-view__text-label__textarea');
 const NewDeckFormSubmitBtn = NewDeckForm.querySelector('.new-deck-view__create-deck-btn');
 const errorModal = document.querySelector('#error-modal');
 const errorModalMessage = errorModal.querySelector('.modal__error');
@@ -12,11 +11,15 @@ errorModalCloseBtn.addEventListener('click', () => {
   errorModalMessage.textContent = '';
 });
 
+/** Displays the new-deck form and hides the other application views.
+ * @returns {void}
+ */
 function renderNewDeckView() {
   const homeSection = document.querySelector('#home');
   const deckViewSection = document.querySelector('#deck-view');
   const carouselSection = document.querySelector('#carousel');
   const newDeckSection = document.querySelector('#new-deck-view');
+  const aboutSection = document.querySelector('#about');
   const notFoundSection = document.querySelector('#not-found');
   const pageEl = document.querySelector('.page');
   const pageMainContent = document.querySelector('.page__main-content');
@@ -29,16 +32,25 @@ function renderNewDeckView() {
   deckViewSection.style.display = 'none';
   carouselSection.style.display = 'none';
   newDeckSection.style.display = 'flex';
+  aboutSection.style.display = 'none';
   notFoundSection.style.display = 'none';
   pageMainContent.classList.add('page__main-content_location_carousel');
   pageEl.classList.add('page_no-mobile-bar');
 }
 
+/** Displays an error message in the modal.
+ * @param {string} message - The message to show.
+ * @returns {void}
+ */
 function showError(message) {
   errorModal.classList.add('modal_visible');
   errorModalMessage.textContent = message;
 }
 
+/** Parses JSON text, returning null when parsing fails.
+ * @param {string} jsonString - The JSON text to parse.
+ * @returns {unknown|null} The parsed value, or null for invalid JSON.
+ */
 function parseJSON(jsonString) {
   try {
     return JSON.parse(jsonString);
@@ -59,6 +71,10 @@ NewDeckForm.addEventListener('submit', (e) => {
     return;
   }
 
+  /** Validates a deck name against the accepted length and type.
+   * @param {unknown} name - The proposed deck name.
+   * @returns {string|undefined} The valid name, or undefined when invalid.
+   */
   function validateName(name) {
     if (typeof name != 'string' || name.length < 2 || name.length > 80) {
       showError('must be a string between 2-80 characters long');
@@ -71,7 +87,6 @@ NewDeckForm.addEventListener('submit', (e) => {
   if (!NAME) {
     return;
   }
-  // const ID = `${slugify(NAME)}-${Date.now()}`;
 
   const color = normalizeColor(values.color);
 
@@ -94,40 +109,18 @@ NewDeckForm.addEventListener('submit', (e) => {
       window.location.hash = 'deck/' + newDeck._id;
     })
     .catch(showError);
-  // decks.push({
-  //   id: ID,
-  //   color: color,
-  //   name: NAME,
-  //   cards: jsonData.cards,
-  // });
-  // window.location.hash = 'deck/' + newDeck._id;
 });
 
 const HEX_DIGITS = /^[0-9a-fA-F]{6}$/;
 
 /**
- * Converts a string to a URL-safe slug: lowercase with any run of
- * non-alphanumeric characters replaced by a single hyphen, and no leading or
- * trailing hyphens.
- *
- * @param {string} str
- * @returns {string}
- */
-function slugify(str) {
-  return str
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-}
-
 /**
  * Returns a consistent lowercase hex color string with a leading "#".
  * Accepts values with or without a leading "#". Returns "#64d583" as a
  * fallback if the value is missing or not a valid 6-digit hex.
  *
- * @param {string|undefined} color
- * @returns {string}
+ * @param {string|undefined} color - The color value to normalize.
+ * @returns {string} The normalized 6-digit hex color.
  */
 function normalizeColor(color) {
   if (!color) return '#64d583';
@@ -136,8 +129,11 @@ function normalizeColor(color) {
   return '#' + hex.toLowerCase();
 }
 
-function disableSubmitBtn() {
+/** Enables the new-deck form's submit button.
+ * @returns {void}
+ */
+function disabledSubmitBtn() {
   NewDeckFormSubmitBtn.disabled = false;
 }
 
-export { renderNewDeckView, slugify, normalizeColor, disableSubmitBtn, showError };
+export { renderNewDeckView, normalizeColor, disabledSubmitBtn, showError };
