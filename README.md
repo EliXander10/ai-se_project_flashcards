@@ -27,5 +27,5 @@ Click Here: [TechFun FlashCards](https://elixander10.github.io/ai-se_project_fla
 
 ## Project Pitch Video
 
-Check out [this video](https://drive.google.com/file/d/1PW0oSgh5jaA-nP_qnU786_ZuKlFiaPK_/view?usp=drive_link), where I describe my
+Check out [this video](https://drive.google.com/file/d/17G_MkqD7Ujb83alw0BT4W1oGTP1OqkBK/view?usp=drive_link), where I describe my
 project and a challenges I faced while building it.
